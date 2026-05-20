@@ -4,719 +4,155 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Grand Senheng Jalan Bukit Ubi Review Helper</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --green-900: #064e3b;
-      --green-800: #065f46;
-      --green-700: #047857;
-      --green-600: #059669;
-      --green-500: #10b981;
-      --green-100: #d1fae5;
-      --green-50:  #ecfdf5;
-      --lime-100:  #ecfccb;
-      --mint:      #f3fff8;
-      --yellow:    #facc15;
-      --ink:       #10231c;
-      --muted:     #60736a;
-      --line:      #cdebdc;
-      --danger:    #b91c1c;
-      --white:     #ffffff;
-      --shadow:    0 18px 40px rgba(6, 78, 59, .14);
-      --softShadow:0 10px 24px rgba(6, 78, 59, .10);
+    :root{
+      --green-950:#052e23; --green-900:#064e3b; --green-800:#065f46; --green-700:#047857;
+      --green-600:#059669; --green-500:#10b981; --green-100:#d1fae5; --green-50:#ecfdf5;
+      --lime:#d9f99d; --yellow:#fde68a; --ink:#13251d; --muted:#64746c; --line:#cce9da;
+      --white:#fff; --panel:rgba(255,255,255,.86); --danger:#b91c1c;
+      --shadow:0 18px 48px rgba(6,78,59,.16); --soft:0 10px 24px rgba(6,78,59,.10);
     }
-
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      min-height: 100vh;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at top left, rgba(16,185,129,.20), transparent 32rem),
-        radial-gradient(circle at top right, rgba(250,204,21,.16), transparent 28rem),
-        linear-gradient(180deg, #f6fff9 0%, #eefbf4 45%, #f8fffb 100%);
-      line-height: 1.5;
-      padding-bottom: 38px;
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent} html,body{margin:0;padding:0}
+    body{
+      min-height:100vh; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--ink);
+      background: radial-gradient(circle at 15% 0%,rgba(16,185,129,.22),transparent 30rem),
+                  radial-gradient(circle at 95% 12%,rgba(217,249,157,.42),transparent 24rem),
+                  linear-gradient(180deg,#f2fff8 0%,#ecfbf2 52%,#fbfffd 100%);
+      line-height:1.5; padding-bottom:32px;
     }
-
-    .shell { width: min(920px, 100%); margin: 0 auto; padding: 18px 14px 32px; }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .logo-mark {
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
-      background: linear-gradient(145deg, var(--green-700), var(--green-500));
-      color: #fff;
-      display: grid;
-      place-items: center;
-      font-size: 1.25rem;
-      font-weight: 900;
-      box-shadow: 0 10px 22px rgba(5,150,105,.28);
-      flex-shrink: 0;
-    }
-
-    .brand small {
-      display: block;
-      color: var(--green-700);
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      font-size: .68rem;
-      margin-bottom: 2px;
-    }
-
-    .brand strong {
-      display: block;
-      font-size: .98rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 520px;
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.72);
-      border-radius: 999px;
-      padding: 9px 12px;
-      color: var(--green-800);
-      font-size: .78rem;
-      font-weight: 800;
-      box-shadow: 0 8px 18px rgba(6,78,59,.06);
-      white-space: nowrap;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green-500);
-      box-shadow: 0 0 0 5px rgba(16,185,129,.15);
-    }
-
-    .hero-panel {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 16px;
-      align-items: stretch;
-      margin-bottom: 16px;
-    }
-
-    .hero-copy, .review-preview {
-      border: 1px solid rgba(205,235,220,.88);
-      background: rgba(255,255,255,.76);
-      backdrop-filter: blur(12px);
-      border-radius: 30px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .hero-copy {
-      padding: 26px;
-      position: relative;
-      min-height: 240px;
-    }
-
-    .hero-copy::after {
-      content: "";
-      position: absolute;
-      right: -50px;
-      bottom: -58px;
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      background: linear-gradient(145deg, rgba(16,185,129,.16), rgba(250,204,21,.12));
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: var(--green-50);
-      color: var(--green-800);
-      font-weight: 900;
-      font-size: .76rem;
-      margin-bottom: 14px;
-      border: 1px solid var(--line);
-    }
-
-    .hero-copy h1 {
-      margin: 0 0 10px;
-      font-size: clamp(1.65rem, 4.8vw, 3rem);
-      letter-spacing: -.05em;
-      line-height: 1.02;
-      max-width: 650px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-copy p {
-      margin: 0;
-      color: var(--muted);
-      font-size: .98rem;
-      max-width: 530px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .review-preview {
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .mini-card {
-      background: #fff;
-      border: 1px solid #e5f4ec;
-      border-radius: 22px;
-      padding: 16px;
-      box-shadow: var(--softShadow);
-    }
-
-    .mini-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-    .avatar {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: linear-gradient(145deg, #dcfce7, #bbf7d0);
-      display: grid; place-items: center;
-      color: var(--green-800); font-weight: 900;
-    }
-    .stars { color: #fbbc04; letter-spacing: 2px; font-size: 1rem; }
-    .mini-lines span {
-      display: block;
-      height: 9px;
-      border-radius: 999px;
-      background: #eaf7f0;
-      margin: 7px 0;
-    }
-    .mini-lines span:nth-child(1) { width: 95%; }
-    .mini-lines span:nth-child(2) { width: 76%; }
-    .mini-lines span:nth-child(3) { width: 58%; }
-
-    .wizard {
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(205,235,220,.95);
-      border-radius: 30px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .steps-head {
-      padding: 16px;
-      border-bottom: 1px solid #e2f5ea;
-      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(236,253,245,.58));
-    }
-
-    .step-tabs {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-    }
-
-    .tab {
-      min-height: 7px;
-      border-radius: 999px;
-      background: #dcefe6;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .tab.active::before,
-    .tab.done::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, var(--green-800), var(--green-500));
-    }
-
-    .step-label-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: .82rem;
-      font-weight: 700;
-    }
-
-    .step-label-row b { color: var(--green-800); }
-
-    .step-body { padding: 20px; }
-
-    .step { display: none; animation: enter .22s ease; }
-    .step.active { display: block; }
-    @keyframes enter {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .section-title {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .section-title h2 { margin: 0; font-size: 1.28rem; letter-spacing: -.02em; }
-    .section-title p { margin: 6px 0 0; color: var(--muted); font-size: .9rem; }
-
-    .step-number {
-      width: 38px;
-      height: 38px;
-      flex-shrink: 0;
-      border-radius: 14px;
-      background: var(--green-50);
-      border: 1px solid var(--line);
-      color: var(--green-800);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-    }
-
-    .choice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .choice-btn {
-      width: 100%;
-      border: 1.5px solid #cdebdc;
-      background: #fff;
-      border-radius: 24px;
-      padding: 17px;
-      text-align: left;
-      cursor: pointer;
-      transition: .2s ease;
-      min-height: 132px;
-      box-shadow: 0 8px 18px rgba(6,78,59,.05);
-    }
-    .choice-btn:hover { transform: translateY(-2px); box-shadow: var(--softShadow); }
-    .choice-btn.active {
-      border-color: var(--green-600);
-      background: linear-gradient(180deg, #f0fdf4, #fff);
-      box-shadow: 0 12px 28px rgba(5,150,105,.16);
-    }
-    .choice-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 16px;
-      background: var(--green-50);
-      display: grid;
-      place-items: center;
-      font-size: 1.25rem;
-      margin-bottom: 12px;
-    }
-    .choice-btn strong { display: block; font-size: 1rem; margin-bottom: 5px; }
-    .choice-btn span { display: block; color: var(--muted); font-size: .85rem; }
-
-    .form-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .form-grid.two { grid-template-columns: repeat(2, 1fr); }
-    .field { margin-bottom: 14px; }
-    .field label { display: block; font-weight: 800; font-size: .83rem; color: var(--green-900); margin: 0 0 7px; }
-    .field input, .field textarea {
-      width: 100%;
-      border: 1.8px solid var(--line);
-      background: #fff;
-      border-radius: 18px;
-      padding: 14px 14px;
-      font: inherit;
-      color: var(--ink);
-      outline: none;
-      transition: .18s ease;
-    }
-    .field input:focus, .field textarea:focus {
-      border-color: var(--green-500);
-      box-shadow: 0 0 0 4px rgba(16,185,129,.14);
-    }
-    .prefix-wrap { position: relative; }
-    .prefix-wrap span {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-weight: 900;
-      color: var(--green-800);
-      pointer-events: none;
-    }
-    .prefix-wrap input { padding-left: 43px; }
-    .hint { color: var(--muted); font-size: .8rem; margin-top: -7px; }
-
-    .notice {
-      display: none;
-      margin-top: 2px;
-      padding: 13px 14px;
-      border-radius: 18px;
-      border: 1px solid #bbf7d0;
-      background: #f0fdf4;
-      color: var(--green-900);
-      font-weight: 800;
-      font-size: .9rem;
-    }
-    .notice.show { display: block; }
-
-    .error {
-      display: none;
-      color: var(--danger);
-      font-size: .82rem;
-      font-weight: 800;
-      margin-top: 8px;
-    }
-
-    .comment-actions { display: flex; gap: 10px; margin-bottom: 12px; }
-    .comment-list { display: grid; gap: 10px; }
-    .comment-card {
-      border: 1.5px solid #d6efe2;
-      background: #fff;
-      border-radius: 20px;
-      padding: 14px 15px;
-      cursor: pointer;
-      color: var(--ink);
-      transition: .18s ease;
-      font-size: .92rem;
-      box-shadow: 0 6px 16px rgba(6,78,59,.04);
-    }
-    .comment-card:hover { border-color: var(--green-500); transform: translateY(-1px); }
-    .comment-card.selected {
-      border-color: var(--green-600);
-      background: #f0fdf4;
-      box-shadow: 0 10px 24px rgba(5,150,105,.12);
-    }
-    textarea.review-box { min-height: 132px; resize: vertical; line-height: 1.55; }
-
-    .final-card {
-      background: #fff;
-      border: 1px solid #dcefe6;
-      border-radius: 24px;
-      padding: 17px;
-      box-shadow: var(--softShadow);
-    }
-    .google-head { display: flex; align-items: center; gap: 11px; margin-bottom: 12px; }
-    .google-avatar { width: 40px; height: 40px; border-radius: 50%; background: #e8eaed; display: grid; place-items: center; font-weight: 900; color: #5f6368; }
-    .google-name { font-weight: 900; }
-    .final-text { white-space: pre-wrap; line-height: 1.58; font-size: .95rem; color: #202124; }
-    .hashtags { margin-top: 12px; color: #047857; font-weight: 800; font-size: .86rem; word-break: break-word; }
-    .photo-note {
-      margin-top: 14px;
-      padding: 12px;
-      border-radius: 16px;
-      background: #fffbeb;
-      border: 1px solid #fde68a;
-      color: #92400e;
-      font-size: .86rem;
-      font-weight: 750;
-    }
-
-    .nav-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 18px;
-    }
-    button { font-family: inherit; }
-    .btn {
-      border: none;
-      border-radius: 999px;
-      padding: 14px 18px;
-      cursor: pointer;
-      font-weight: 900;
-      font-size: .94rem;
-      transition: .18s ease;
-      width: 100%;
-    }
-    .btn.primary {
-      color: #fff;
-      background: linear-gradient(90deg, var(--green-800), var(--green-500));
-      box-shadow: 0 12px 24px rgba(5,150,105,.25);
-    }
-    .btn.primary:hover { filter: brightness(.97); transform: translateY(-1px); }
-    .btn.secondary {
-      color: var(--green-900);
-      background: #eefbf4;
-      border: 1px solid var(--line);
-    }
-    .btn.ghost {
-      color: var(--green-900);
-      background: #fff;
-      border: 1px solid var(--line);
-      padding: 11px 14px;
-      font-size: .85rem;
-      box-shadow: 0 6px 14px rgba(6,78,59,.04);
-    }
-    .btn:active { transform: scale(.98); }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(3, 37, 27, .62);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      z-index: 50;
-    }
-    .modal.show { display: flex; }
-    .modal-box {
-      width: min(390px, 100%);
-      background: #fff;
-      border-radius: 28px;
-      padding: 24px;
-      text-align: center;
-      box-shadow: 0 24px 60px rgba(0,0,0,.26);
-      animation: modalIn .2s ease;
-    }
-    @keyframes modalIn {
-      from { opacity: 0; transform: translateY(12px) scale(.97); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .modal-icon {
-      width: 62px; height: 62px; border-radius: 22px;
-      background: linear-gradient(145deg, var(--green-700), var(--green-500));
-      color: #fff;
-      display: grid; place-items: center;
-      margin: 0 auto 14px;
-      font-size: 1.7rem;
-      font-weight: 900;
-    }
-    .modal-box h3 { margin: 0 0 8px; font-size: 1.25rem; }
-    .modal-box p { margin: 0 0 16px; color: var(--muted); font-size: .92rem; }
-
-    @media (max-width: 760px) {
-      .shell { padding: 13px 10px 26px; }
-      .topbar { align-items: flex-start; }
-      .status-pill { display: none; }
-      .brand strong { max-width: 280px; }
-      .hero-panel { grid-template-columns: 1fr; }
-      .review-preview { display: none; }
-      .hero-copy { min-height: unset; padding: 22px; border-radius: 26px; }
-      .wizard { border-radius: 26px; }
-      .step-body { padding: 16px; }
-      .choice-grid, .form-grid, .form-grid.two { grid-template-columns: 1fr; }
-      .step-label-row { font-size: .78rem; }
-      .section-title { align-items: flex-start; }
-      .section-title h2 { font-size: 1.14rem; }
-      .nav-row { grid-template-columns: 1fr; }
-    }
+    button,input,textarea{font:inherit} button{cursor:pointer}
+    .app{width:min(980px,100%);margin:0 auto;padding:16px 14px 34px}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .mark{width:46px;height:46px;border-radius:16px;background:linear-gradient(145deg,var(--green-800),var(--green-500));color:white;display:grid;place-items:center;font-weight:900;box-shadow:0 12px 24px rgba(5,150,105,.25);flex:0 0 auto}
+    .brand small{display:block;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--green-800);font-weight:900;margin-bottom:2px}
+    .brand strong{display:block;font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:560px}
+    .load-pill{border:1px solid var(--line);background:rgba(255,255,255,.72);border-radius:999px;padding:9px 12px;font-size:.76rem;font-weight:800;color:var(--green-800);white-space:nowrap;box-shadow:var(--soft)}
+    .hero{display:grid;grid-template-columns:1.08fr .92fr;gap:16px;margin-bottom:16px}
+    .hero-card,.tip-card,.wizard,.preview-box{background:var(--panel);border:1px solid rgba(204,233,218,.92);border-radius:30px;box-shadow:var(--shadow);backdrop-filter:blur(12px)}
+    .hero-card{padding:26px;position:relative;overflow:hidden;min-height:245px}
+    .hero-card:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-64px;bottom:-70px;background:linear-gradient(145deg,rgba(16,185,129,.22),rgba(217,249,157,.40))}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--green-50);border:1px solid var(--line);color:var(--green-800);padding:8px 12px;border-radius:999px;font-size:.76rem;font-weight:900;margin-bottom:14px}
+    h1{margin:0 0 10px;font-size:clamp(1.75rem,5vw,3.15rem);letter-spacing:-.055em;line-height:1.02;position:relative;z-index:1}
+    .hero-card p{margin:0;color:var(--muted);font-size:1rem;max-width:560px;position:relative;z-index:1}
+    .tip-card{padding:20px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+    .tip{background:white;border:1px solid #e5f4ec;border-radius:22px;padding:16px;box-shadow:var(--soft)}
+    .tip-title{font-weight:900;margin-bottom:6px;color:var(--green-900)} .tip p{margin:0;color:var(--muted);font-size:.9rem}
+    .stars{color:#fbbc04;letter-spacing:2px;font-size:1rem;margin-top:8px}
+    .wizard{overflow:hidden}
+    .stepper{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:16px 16px 0}
+    .seg{height:9px;border-radius:999px;background:#dff5e9;overflow:hidden}.seg span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green-800),var(--green-500));border-radius:999px;transition:.25s}.seg.done span{width:100%}
+    .step-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 18px 0;color:var(--green-800);font-weight:900;font-size:.82rem}
+    .page{display:none;padding:18px}.page.active{display:block;animation:up .22s ease}@keyframes up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+    .card-title{font-size:1.28rem;font-weight:950;letter-spacing:-.03em;margin:0 0 6px}.subtitle{margin:0 0 16px;color:var(--muted);font-size:.93rem}
+    .choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.choice{border:2px solid var(--line);background:white;border-radius:24px;padding:18px;text-align:left;box-shadow:0 8px 18px rgba(6,78,59,.06);transition:.18s}.choice.active,.choice:hover{border-color:var(--green-600);background:linear-gradient(180deg,#fff,#f1fff8);transform:translateY(-1px)}.choice b{display:block;font-size:1.02rem;margin-bottom:5px}.choice span{display:block;color:var(--muted);font-size:.86rem}
+    .form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.form-grid.two{grid-template-columns:repeat(2,1fr)}
+    label{display:block;font-size:.82rem;font-weight:850;color:var(--green-900);margin:0 0 7px} input,textarea{width:100%;border:2px solid var(--line);border-radius:18px;background:white;color:var(--ink);padding:14px 15px;outline:none;transition:.18s} input:focus,textarea:focus{border-color:var(--green-600);box-shadow:0 0 0 4px rgba(16,185,129,.13)}textarea{min-height:132px;resize:vertical}
+    .help{font-size:.8rem;color:var(--muted);margin-top:7px}.error{display:none;color:var(--danger);font-size:.82rem;font-weight:800;margin-top:8px}.error.show{display:block}
+    .wow{display:none;margin-top:14px;background:#effdf5;border:1px solid #bbf7d0;color:var(--green-900);padding:13px 14px;border-radius:18px;font-size:.9rem;font-weight:750}.wow.show{display:block}
+    .comments{display:grid;gap:10px}.comment{border:1.5px solid var(--line);background:white;border-radius:18px;padding:14px 15px;text-align:left;font-size:.92rem;color:#1f352b;transition:.18s}.comment.selected{border-color:var(--green-600);background:#f0fff7;box-shadow:0 8px 18px rgba(5,150,105,.10)}
+    .toolbar{display:flex;gap:10px;align-items:center;margin-bottom:12px}.toolbar button{width:auto}.template-status{font-size:.78rem;color:var(--muted);font-weight:750;margin-left:auto}
+    .nav{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.btn{border:0;border-radius:999px;padding:14px 17px;font-weight:900;font-size:.95rem;width:100%;transition:.18s}.btn:active{transform:scale(.98)}.primary{background:var(--green-700);color:white;box-shadow:0 12px 24px rgba(4,120,87,.22)}.primary:hover{background:var(--green-800)}.secondary{background:#effdf5;color:var(--green-900);border:1px solid var(--line)}.soft{background:white;color:var(--green-800);border:1px solid var(--line);padding:11px 14px;font-size:.86rem}
+    .preview-box{padding:18px;background:white}.g-head{display:flex;gap:10px;align-items:center;margin-bottom:12px}.avatar{width:38px;height:38px;border-radius:50%;background:#e8f5ef;display:grid;place-items:center;font-weight:900;color:var(--green-800)}.review-text{white-space:pre-wrap;color:#202124;font-size:.95rem}.hash{margin-top:10px;color:#1a73e8;font-weight:700;font-size:.86rem}.note{margin-top:14px;border-radius:16px;padding:12px 13px;background:#fffbea;border:1px solid #fde68a;color:#8a5a00;font-size:.86rem;font-weight:750}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}.modal.show{display:flex}.modal-card{background:white;border-radius:28px;box-shadow:0 24px 60px rgba(0,0,0,.25);padding:24px;width:min(380px,100%);text-align:center}.modal-icon{width:60px;height:60px;border-radius:50%;background:var(--green-100);color:var(--green-800);display:grid;place-items:center;margin:0 auto 14px;font-size:1.7rem;font-weight:900}.modal-card h3{margin:0 0 8px}.modal-card p{margin:0 0 16px;color:var(--muted);font-size:.9rem}
+    @media(max-width:760px){.top{align-items:flex-start}.load-pill{font-size:.68rem;padding:8px 10px}.hero{grid-template-columns:1fr}.tip-card{display:none}.choice-grid,.form-grid,.form-grid.two{grid-template-columns:1fr}.nav{grid-template-columns:1fr}.brand strong{max-width:240px}.page{padding:16px}.hero-card{padding:22px;border-radius:26px}.wizard{border-radius:26px}}
   </style>
 </head>
 <body>
-  <main class="shell">
-    <header class="topbar">
+  <main class="app">
+    <div class="top">
       <div class="brand">
-        <div class="logo-mark">S</div>
-        <div>
-          <small>Review Helper</small>
-          <strong>Grand Senheng Jalan Bukit Ubi</strong>
-        </div>
+        <div class="mark">S</div>
+        <div><small>Review Helper</small><strong>Grand Senheng Jalan Bukit Ubi</strong></div>
       </div>
-      <div class="status-pill"><span class="status-dot"></span><span id="templateStatus">Memuatkan template...</span></div>
-    </header>
+      <div class="load-pill" id="loadStatus">Loading comments...</div>
+    </div>
 
-    <section class="hero-panel">
-      <div class="hero-copy">
-        <div class="eyebrow">⭐ Google Review + S-Coin</div>
-        <h1>Tulis review S-Coin anda dengan mudah.</h1>
-        <p>Pilih pengalaman anda, isi maklumat ringkas, kemudian copy ayat review untuk dikongsi di Google Review.</p>
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">⭐ Untuk Google Review anda</div>
+        <h1>Tulis review S-Coin dengan lebih senang.</h1>
+        <p>Pilih jenis transaksi, isi detail ringkas, pilih ayat yang anda suka, edit kalau perlu, kemudian copy dan paste di Google Review.</p>
       </div>
-      <aside class="review-preview" aria-hidden="true">
-        <div class="mini-card">
-          <div class="mini-head">
-            <div class="avatar">G</div>
-            <div>
-              <div style="font-weight:900;">Google Review</div>
-              <div class="stars">★★★★★</div>
-            </div>
-          </div>
-          <div class="mini-lines"><span></span><span></span><span></span></div>
-        </div>
-        <div class="mini-card" style="background:linear-gradient(145deg,#ecfdf5,#ffffff);">
-          <strong style="display:block;margin-bottom:5px;color:var(--green-900);">S-Coin Reward</strong>
-          <span style="color:var(--muted);font-size:.88rem;">Review yang lebih mudah, kemas dan natural.</span>
-        </div>
-      </aside>
+      <div class="tip-card">
+        <div class="tip"><div class="tip-title">Cara guna</div><p>Ikut step satu per satu. Ayat review akan disediakan automatik ikut maklumat yang anda isi.</p></div>
+        <div class="tip"><div class="tip-title">Boleh edit sendiri</div><p>Template cuma cadangan. Anda bebas ubah ayat supaya lebih kena dengan pengalaman sebenar anda.</p><div class="stars">★★★★★</div></div>
+      </div>
     </section>
 
     <section class="wizard">
-      <div class="steps-head">
-        <div class="step-tabs" aria-hidden="true">
-          <div class="tab active" id="tab1"></div>
-          <div class="tab" id="tab2"></div>
-          <div class="tab" id="tab3"></div>
-          <div class="tab" id="tab4"></div>
-          <div class="tab" id="tab5"></div>
+      <div class="stepper" id="stepper"><div class="seg"><span></span></div><div class="seg"><span></span></div><div class="seg"><span></span></div><div class="seg"><span></span></div><div class="seg"><span></span></div></div>
+      <div class="step-head"><span id="stepLabel">Step 1 of 5</span><span id="modeLabel">Beli & Dapat S-Coin</span></div>
+
+      <section class="page active" id="step1">
+        <h2 class="card-title">Pilih pengalaman anda</h2>
+        <p class="subtitle">Tekan pilihan yang paling sesuai dengan transaksi anda.</p>
+        <div class="choice-grid">
+          <button class="choice active" id="modeEarn" type="button"><b>💰 Beli & dapat S-Coin</b><span>Saya beli barang dan dapat S-Coin cashback.</span></button>
+          <button class="choice" id="modeRedeem" type="button"><b>🎁 Redeem S-Coin</b><span>Saya guna S-Coin untuk tebus atau kurangkan bayaran barang.</span></button>
         </div>
-        <div class="step-label-row"><b id="stepText">Langkah 1 / 5</b><span id="stepHint">Pilih jenis pengalaman</span></div>
-      </div>
+      </section>
 
-      <div class="step-body">
-        <section class="step active" id="step1">
-          <div class="section-title">
-            <div>
-              <h2>Pilih pengalaman anda</h2>
-              <p>Pilih sama ada anda mendapat S-Coin cashback atau menggunakan S-Coin untuk redeem barang.</p>
-            </div>
-            <div class="step-number">1</div>
-          </div>
-          <div class="choice-grid">
-            <button class="choice-btn active" type="button" id="modeEarn">
-              <div class="choice-icon">💰</div>
-              <strong>Beli & dapat S-Coin</strong>
-              <span>Untuk pembelian yang menerima S-Coin cashback.</span>
-            </button>
-            <button class="choice-btn" type="button" id="modeRedeem">
-              <div class="choice-icon">🎁</div>
-              <strong>Redeem S-Coin</strong>
-              <span>Untuk pengalaman tebus barang menggunakan S-Coin.</span>
-            </button>
-          </div>
-        </section>
+      <section class="page" id="step2">
+        <h2 class="card-title">Masukkan kod staf</h2>
+        <p class="subtitle">Kod ini akan jadi hashtag di hujung review. Kalau tak pasti, minta staf tunjukkan kod mereka.</p>
+        <label for="staffCode">Kod staf</label>
+        <input id="staffCode" placeholder="Contoh: SH9861" autocomplete="off" inputmode="text" />
+        <div class="help">Boleh taip <b>9861</b> atau <b>SH9861</b>. Sistem akan kemaskan jadi format <b>SH9861</b>.</div>
+        <div class="error" id="errStaff">Sila masukkan kod staf dahulu.</div>
+        <div class="nav"><button class="btn secondary" type="button" onclick="goStep(1)">← Back</button><button class="btn primary" type="button" onclick="checkStep2()">Next →</button></div>
+      </section>
 
-        <section class="step" id="step2">
-          <div class="section-title">
-            <div>
-              <h2>Masukkan kod staf</h2>
-              <p>Kod ini akan dimasukkan sebagai hashtag di hujung review.</p>
-            </div>
-            <div class="step-number">2</div>
-          </div>
-          <div class="field">
-            <label for="staffCode">Kod staf</label>
-            <input id="staffCode" type="text" autocomplete="off" inputmode="text" placeholder="Cth: SH9861" />
-            <div class="hint">Jika anda taip nombor sahaja, sistem akan tambah SH secara automatik.</div>
-            <div class="error" id="errStaff">Sila masukkan kod staf. Contoh: SH9861</div>
-          </div>
-          <div class="nav-row">
-            <button class="btn secondary" type="button" onclick="goStep(1)">← Kembali</button>
-            <button class="btn primary" type="button" onclick="checkStep2()">Seterusnya →</button>
-          </div>
-        </section>
+      <section class="page" id="step3">
+        <h2 class="card-title">Isi maklumat transaksi</h2>
+        <p class="subtitle">Isi ringkas saja. Maklumat ini akan masuk ke dalam ayat review secara automatik.</p>
+        <div id="earnFields" class="form-grid">
+          <div><label for="earnItem">Barang dibeli</label><input id="earnItem" placeholder="Contoh: TV, peti ais, iPhone" /></div>
+          <div><label for="earnPrice">Harga barang</label><input id="earnPrice" placeholder="Contoh: 2799" inputmode="decimal" /></div>
+          <div><label for="earnPercent">S-Coin cashback (%)</label><input id="earnPercent" placeholder="Contoh: 50" inputmode="decimal" /></div>
+        </div>
+        <div id="redeemFields" class="form-grid two" style="display:none">
+          <div><label for="redeemItem">Barang ditebus</label><input id="redeemItem" placeholder="Contoh: blender, air fryer" /></div>
+          <div><label for="redeemPoints">Jumlah S-Coin digunakan</label><input id="redeemPoints" placeholder="Contoh: 5000" inputmode="numeric" /></div>
+        </div>
+        <div class="wow" id="wowBox"></div>
+        <div class="error" id="errStep3">Sila isi semua maklumat yang diperlukan.</div>
+        <div class="nav"><button class="btn secondary" type="button" onclick="goStep(2)">← Back</button><button class="btn primary" type="button" onclick="checkStep3()">Next →</button></div>
+      </section>
 
-        <section class="step" id="step3">
-          <div class="section-title">
-            <div>
-              <h2>Isi maklumat ringkas</h2>
-              <p>Maklumat ini akan dimasukkan ke dalam ayat review secara automatik.</p>
-            </div>
-            <div class="step-number">3</div>
-          </div>
+      <section class="page" id="step4">
+        <h2 class="card-title">Pilih ayat review</h2>
+        <p class="subtitle">Pilih satu ayat yang paling ngam. Lepas pilih, anda masih boleh edit ikut pengalaman sendiri.</p>
+        <div class="toolbar"><button class="btn soft" type="button" onclick="loadTemplates()">🔄 Tukar pilihan</button><span class="template-status" id="templateStatus">0 template</span></div>
+        <div class="comments" id="commentList"></div>
+        <label for="finalCommentText" style="margin-top:14px">Review anda</label>
+        <textarea id="finalCommentText" placeholder="Pilih template di atas, atau taip review sendiri di sini..."></textarea>
+        <div class="help">Tip: Review paling bagus ialah ayat yang jujur dan nampak macam pengalaman sebenar anda.</div>
+        <div class="error" id="errStep4">Sila pilih template atau tulis review anda dahulu.</div>
+        <div class="nav"><button class="btn secondary" type="button" onclick="goStep(3)">← Back</button><button class="btn primary" type="button" onclick="checkStep4()">Preview →</button></div>
+      </section>
 
-          <div id="earnFields">
-            <div class="form-grid">
-              <div class="field">
-                <label for="earnItem">Barang dibeli</label>
-                <input id="earnItem" type="text" placeholder="Cth: TV, peti ais, iPhone" oninput="calcWow()" />
-              </div>
-              <div class="field">
-                <label for="earnPrice">Harga barang</label>
-                <div class="prefix-wrap"><span>RM</span><input id="earnPrice" type="text" inputmode="decimal" placeholder="0.00" /></div>
-              </div>
-              <div class="field">
-                <label for="earnPercent">S-Coin cashback (%)</label>
-                <input id="earnPercent" type="number" min="1" max="100" placeholder="Cth: 50" oninput="calcWow()" />
-              </div>
-            </div>
-          </div>
-
-          <div id="redeemFields" style="display:none;">
-            <div class="form-grid two">
-              <div class="field">
-                <label for="redeemItem">Barang ditebus</label>
-                <input id="redeemItem" type="text" placeholder="Cth: rice cooker, blender" oninput="calcWow()" />
-              </div>
-              <div class="field">
-                <label for="redeemPoints">Jumlah S-Coin digunakan</label>
-                <input id="redeemPoints" type="number" min="1" placeholder="Cth: 5000" oninput="calcWow()" />
-              </div>
-            </div>
-          </div>
-
-          <div class="notice" id="wowFactor"></div>
-          <div class="error" id="errStep3">Sila isi semua maklumat yang diperlukan dengan betul.</div>
-          <div class="nav-row">
-            <button class="btn secondary" type="button" onclick="goStep(2)">← Kembali</button>
-            <button class="btn primary" type="button" onclick="checkStep3()">Seterusnya →</button>
-          </div>
-        </section>
-
-        <section class="step" id="step4">
-          <div class="section-title">
-            <div>
-              <h2>Pilih ayat review</h2>
-              <p>Pilih satu ayat yang paling sesuai. Anda juga boleh edit sendiri dalam kotak di bawah.</p>
-            </div>
-            <div class="step-number">4</div>
-          </div>
-          <div class="comment-actions">
-            <button class="btn ghost" type="button" onclick="loadTemplates()">↻ Tukar pilihan ayat</button>
-          </div>
-          <div class="comment-list" id="commentList"></div>
-          <div class="field" style="margin-top:14px;">
-            <label for="finalCommentText">Ayat review anda</label>
-            <textarea id="finalCommentText" class="review-box" placeholder="Ayat review akan muncul di sini. Anda boleh ubah ikut pengalaman sebenar anda."></textarea>
-            <div class="error" id="errStep4">Sila pilih atau taip ayat review.</div>
-          </div>
-          <div class="nav-row">
-            <button class="btn secondary" type="button" onclick="goStep(3)">← Kembali</button>
-            <button class="btn primary" type="button" onclick="checkStep4()">Semak review →</button>
-          </div>
-        </section>
-
-        <section class="step" id="step5">
-          <div class="section-title">
-            <div>
-              <h2>Review sudah siap</h2>
-              <p>Semak ayat akhir, kemudian copy dan buka Google Review.</p>
-            </div>
-            <div class="step-number">5</div>
-          </div>
-          <div class="final-card">
-            <div class="google-head">
-              <div class="google-avatar">👤</div>
-              <div>
-                <div class="google-name">Nama Anda</div>
-                <div class="stars">★★★★★</div>
-              </div>
-            </div>
-            <div class="final-text" id="mockReviewText"></div>
-            <div class="hashtags" id="mockHashtags"></div>
-            <div class="photo-note">Jika mahu, anda boleh tambah gambar barang dalam Google Review supaya review nampak lebih lengkap.</div>
-          </div>
-          <div class="nav-row">
-            <button class="btn secondary" type="button" onclick="goStep(4)">← Edit semula</button>
-            <button class="btn primary" type="button" onclick="copyAndProceed()">Copy & buka Google</button>
-          </div>
-        </section>
-      </div>
+      <section class="page" id="step5">
+        <h2 class="card-title">Semak sebelum copy</h2>
+        <p class="subtitle">Kalau semua okay, tekan butang bawah untuk copy review dan buka Google Review.</p>
+        <div class="preview-box">
+          <div class="g-head"><div class="avatar">U</div><div><b>Review anda</b><div class="stars">★★★★★</div></div></div>
+          <div class="review-text" id="mockReviewText"></div>
+          <div class="hash" id="mockHashtags"></div>
+          <div class="note">Jika mahu, anda boleh tambah gambar barang dalam Google Review supaya review nampak lebih real. Ini pilihan anda sendiri.</div>
+        </div>
+        <div class="nav"><button class="btn secondary" type="button" onclick="goStep(4)">← Back</button><button class="btn primary" type="button" onclick="copyAndProceed()">Copy & buka Google →</button></div>
+      </section>
     </section>
   </main>
 
   <div class="modal" id="successModal">
-    <div class="modal-box">
+    <div class="modal-card">
       <div class="modal-icon">✓</div>
-      <h3>Review berjaya di-copy</h3>
-      <p>Ayat review bersama hashtag sudah disalin. Selepas Google Review dibuka, paste ayat tersebut dan berikan rating anda.</p>
+      <h3>Review sudah di-copy</h3>
+      <p>Google Review akan dibuka. Paste ayat tadi, pilih 5 bintang jika anda berpuas hati, dan submit.</p>
       <button class="btn primary" type="button" onclick="openGoogleMaps()">Buka Google Review</button>
-      <button class="btn ghost" type="button" style="margin-top:10px;" onclick="closeModal()">Tutup</button>
+      <button class="btn secondary" style="margin-top:10px" type="button" onclick="closeModal()">Tutup</button>
     </div>
   </div>
 
@@ -727,312 +163,240 @@
 
   let currentStep = 1;
   let mode = "earn";
-  let rawPrice = 0;
   let allComments = { earn: [], redeem: [] };
+  let rawPrice = 0;
 
-  const stepHints = {
-    1: "Pilih jenis pengalaman",
-    2: "Masukkan kod staf",
-    3: "Isi maklumat pembelian",
-    4: "Pilih ayat review",
-    5: "Copy review"
-  };
-
-  const fallbackComments = {
-    earn: [
-      "Saya baru beli {item} dengan harga {price}. Paling best dapat S-Coin cashback {percent} bernilai {netValue}. Memang rasa lebih berbaloi.",
-      "Pengalaman beli {item} sangat memuaskan. Harga {price}, siap dapat S-Coin cashback {percent} nilai {netValue}. Senang faham dan terasa manfaatnya.",
-      "Beli {item} hari ni terasa lebih smart sebab dapat kumpul S-Coin cashback {percent} bernilai {netValue}. Harga barang {price}, memang puas hati.",
-      "Saya puas hati beli {item} pada harga {price}. Cashback S-Coin {percent} bernilai {netValue} buat pembelian ni rasa lebih bernilai."
-    ],
-    redeem: [
-      "Saya redeem {item} menggunakan {points} S-Coin dan dapat jimat {value}. Rasa berbaloi sebab point yang dikumpul boleh digunakan dengan mudah.",
-      "S-Coin yang terkumpul akhirnya boleh digunakan untuk {item}. Guna {points} S-Coin dan jimat {value}. Memang puas hati.",
-      "Pengalaman redeem {item} sangat mudah. Dengan {points} S-Coin, saya dapat nilai penjimatan {value}. Reward memang terasa.",
-      "Saya tak sangka {points} S-Coin boleh bantu jimat {value} untuk {item}. Memang rasa berbaloi jadi member."
-    ]
-  };
-
-  const tabs = [1,2,3,4,5].map(n => document.getElementById(`tab${n}`));
-  const stepText = document.getElementById("stepText");
-  const stepHint = document.getElementById("stepHint");
+  const pages = document.querySelectorAll(".page");
+  const segs = document.querySelectorAll(".seg");
+  const loadStatus = document.getElementById("loadStatus");
   const templateStatus = document.getElementById("templateStatus");
-  const earnPriceInput = document.getElementById("earnPrice");
 
   document.addEventListener("DOMContentLoaded", () => {
-    initEvents();
-    fetchComments();
+    setupEvents();
+    loadCommentsFromJson();
+    updateStepper();
   });
 
-  function initEvents() {
+  function setupEvents(){
     document.getElementById("modeEarn").addEventListener("click", () => setMode("earn"));
     document.getElementById("modeRedeem").addEventListener("click", () => setMode("redeem"));
 
-    document.getElementById("staffCode").addEventListener("input", (e) => {
-      e.target.value = normaliseStaffCode(e.target.value);
-      document.getElementById("errStaff").style.display = "none";
+    document.getElementById("staffCode").addEventListener("input", e => {
+      document.getElementById("errStaff").classList.remove("show");
+      const cursorEnd = e.target.selectionStart === e.target.value.length;
+      e.target.value = cleanStaffCode(e.target.value, false);
+      if(cursorEnd) e.target.selectionStart = e.target.selectionEnd = e.target.value.length;
     });
 
-    earnPriceInput.addEventListener("focus", function() {
-      if (rawPrice > 0) this.value = rawPrice;
+    ["earnItem","earnPrice","earnPercent","redeemItem","redeemPoints"].forEach(id => {
+      document.getElementById(id).addEventListener("input", () => {
+        document.getElementById("errStep3").classList.remove("show");
+        calcWow();
+      });
     });
 
-    earnPriceInput.addEventListener("input", function(e) {
-      const val = e.target.value.replace(/[^0-9.]/g, "");
-      const pieces = val.split(".");
-      const clean = pieces.length > 2 ? pieces[0] + "." + pieces.slice(1).join("") : val;
-      e.target.value = clean;
-      rawPrice = parseFloat(clean) || 0;
+    document.getElementById("earnPrice").addEventListener("input", e => {
+      rawPrice = parseNumber(e.target.value);
+    });
+    document.getElementById("earnPrice").addEventListener("blur", e => {
+      rawPrice = parseNumber(e.target.value);
+      e.target.value = rawPrice ? rawPrice.toLocaleString("en-MY", {minimumFractionDigits:2, maximumFractionDigits:2}) : "";
       calcWow();
     });
-
-    earnPriceInput.addEventListener("blur", function() {
-      if (rawPrice > 0) {
-        this.value = rawPrice.toLocaleString("en-MY", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      } else {
-        this.value = "";
-      }
+    document.getElementById("earnPrice").addEventListener("focus", e => {
+      if(rawPrice) e.target.value = String(rawPrice);
     });
   }
 
-  async function fetchComments() {
-    /*
-      This page can load either filename:
-      1) scoin_comments_impactful_malaysia_200x2.json  -> the new 200+200 comment set
-      2) scoin_comments.json                          -> standard name for GitHub upload
-
-      The timestamp query prevents browser/GitHub Pages cache from showing old comments.
-    */
-    const commentFiles = [
-      "scoin_comments_impactful_malaysia_200x2.json",
-      "scoin_comments.json"
-    ];
-
-    for (const file of commentFiles) {
-      try {
-        const res = await fetch(`${file}?v=${Date.now()}`, { cache: "no-store" });
-        if (!res.ok) throw new Error(`Cannot load ${file}`);
-
-        const data = await res.json();
-        if (!Array.isArray(data.earn) || !Array.isArray(data.redeem)) {
-          throw new Error(`Invalid JSON structure in ${file}`);
-        }
-
-        allComments = data;
-        templateStatus.innerText = `Template loaded: ${data.earn.length} earn / ${data.redeem.length} redeem`;
-        return;
-      } catch (err) {
-        console.warn(err.message);
-      }
+  async function loadCommentsFromJson(){
+    try{
+      const response = await fetch(`scoin_comments.json?v=${Date.now()}`, { cache: "no-store" });
+      if(!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      if(!Array.isArray(data.earn) || !Array.isArray(data.redeem)) throw new Error("Invalid JSON structure");
+      allComments.earn = data.earn;
+      allComments.redeem = data.redeem;
+      loadStatus.textContent = `Loaded: ${data.earn.length} earn / ${data.redeem.length} redeem`;
+      templateStatus.textContent = `${allComments[mode].length} template`;
+    }catch(err){
+      console.error(err);
+      allComments = {
+        earn: [
+          "Baru beli {item} harga {price}. Dapat pula S-Coin cashback {percent} bernilai {netValue}, memang rasa lebih worth it dan berbaloi untuk next purchase.",
+          "Selesai beli {item} dengan harga {price}. S-Coin cashback {percent} nilai {netValue} tu memang bonus yang saya boleh guna untuk redeem barang lain nanti."
+        ],
+        redeem: [
+          "Hari ni redeem {item} guna {points} S-Coin dan dapat jimat {value}. Baru terasa reward ni memang boleh bantu kurangkan bayaran.",
+          "Tak sangka S-Coin yang terkumpul boleh guna untuk {item}. Tolak {points} S-Coin, terus nampak saving {value}. Memang puas hati."
+        ]
+      };
+      loadStatus.textContent = "JSON tak load — guna backup";
+      templateStatus.textContent = `${allComments[mode].length} backup`;
     }
-
-    allComments = fallbackComments;
-    templateStatus.innerText = "Template asas digunakan — JSON tidak dapat dibaca";
   }
 
-  function setMode(selectedMode) {
-    mode = selectedMode;
+  function setMode(newMode){
+    mode = newMode;
     document.getElementById("modeEarn").classList.toggle("active", mode === "earn");
     document.getElementById("modeRedeem").classList.toggle("active", mode === "redeem");
-    document.getElementById("earnFields").style.display = mode === "earn" ? "block" : "none";
-    document.getElementById("redeemFields").style.display = mode === "redeem" ? "block" : "none";
-    document.getElementById("errStep3").style.display = "none";
-    calcWow();
+    document.getElementById("earnFields").style.display = mode === "earn" ? "grid" : "none";
+    document.getElementById("redeemFields").style.display = mode === "redeem" ? "grid" : "none";
+    document.getElementById("modeLabel").textContent = mode === "earn" ? "Beli & Dapat S-Coin" : "Redeem S-Coin";
+    document.getElementById("wowBox").classList.remove("show");
     setTimeout(() => goStep(2), 180);
   }
 
-  function goStep(n) {
-    document.querySelectorAll(".step").forEach(s => s.classList.remove("active"));
+  function goStep(n){
+    pages.forEach(p => p.classList.remove("active"));
     document.getElementById(`step${n}`).classList.add("active");
     currentStep = n;
-
-    tabs.forEach((tab, index) => {
-      const stepNo = index + 1;
-      tab.classList.toggle("active", stepNo === n);
-      tab.classList.toggle("done", stepNo < n);
-    });
-
-    stepText.innerText = `Langkah ${n} / 5`;
-    stepHint.innerText = stepHints[n] || "";
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
-    if (n === 4) loadTemplates();
-    if (n === 5) prepareFinalReview();
+    updateStepper();
+    window.scrollTo({top:0, behavior:"smooth"});
+    if(n === 4) loadTemplates();
+    if(n === 5) prepareFinalReview();
   }
 
-  function normaliseStaffCode(value) {
-    let clean = String(value || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
-    if (/^\d+$/.test(clean) && clean.length > 0) clean = "SH" + clean;
-    return clean;
+  function updateStepper(){
+    document.getElementById("stepLabel").textContent = `Step ${currentStep} of 5`;
+    segs.forEach((s, i) => s.classList.toggle("done", i < currentStep));
   }
 
-  function getStaffCode() {
-    return normaliseStaffCode(document.getElementById("staffCode").value);
+  function cleanStaffCode(v, final=true){
+    let code = String(v || "").toUpperCase().replace(/#/g, "").replace(/[^A-Z0-9]/g, "");
+    if(final && code && /^\d+$/.test(code)) code = "SH" + code;
+    return code;
   }
 
-  function checkStep2() {
-    const code = getStaffCode();
-    if (!code || code.length < 4) {
-      document.getElementById("errStaff").style.display = "block";
-      return;
-    }
-    document.getElementById("staffCode").value = code;
+  function checkStep2(){
+    const input = document.getElementById("staffCode");
+    input.value = cleanStaffCode(input.value, true);
+    if(!input.value){ document.getElementById("errStaff").classList.add("show"); return; }
     goStep(3);
   }
 
-  function calcWow() {
-    const box = document.getElementById("wowFactor");
-    box.classList.remove("show");
+  function parseNumber(v){
+    const n = parseFloat(String(v || "").replace(/,/g, "").replace(/[^0-9.]/g, ""));
+    return isNaN(n) ? 0 : n;
+  }
 
-    if (mode === "earn") {
-      const percent = parseFloat(document.getElementById("earnPercent").value) || 0;
-      if (rawPrice > 0 && percent > 0) {
-        const gross = rawPrice * percent / 100;
-        const net = gross * 0.95;
-        box.innerText = `Anggaran S-Coin diterima selepas 5% maintenance fee: ${formatRM(net)}`;
+  function formatRM(n){
+    return "RM" + Number(n || 0).toLocaleString("en-MY", {minimumFractionDigits:2, maximumFractionDigits:2});
+  }
+  function formatNum(n){ return Number(n || 0).toLocaleString("en-MY"); }
+
+  function getEarnData(){
+    const item = document.getElementById("earnItem").value.trim();
+    const price = parseNumber(document.getElementById("earnPrice").value);
+    const percent = parseNumber(document.getElementById("earnPercent").value);
+    const netValue = price * (percent / 100) * 0.95;
+    return { item, price, percent, netValue };
+  }
+
+  function getRedeemData(){
+    const item = document.getElementById("redeemItem").value.trim();
+    const points = parseNumber(document.getElementById("redeemPoints").value);
+    const value = points / 100;
+    return { item, points, value };
+  }
+
+  function calcWow(){
+    const box = document.getElementById("wowBox");
+    if(mode === "earn"){
+      const d = getEarnData();
+      if(d.item && d.price > 0 && d.percent > 0){
+        box.innerHTML = `Anggaran nilai S-Coin selepas 5% deduction: <b>${formatRM(d.netValue)}</b>`;
         box.classList.add("show");
-      }
+      } else box.classList.remove("show");
     } else {
-      const points = parseFloat(document.getElementById("redeemPoints").value) || 0;
-      if (points > 0) {
-        const value = points / 100;
-        box.innerText = `Anggaran nilai redemption: ${formatRM(value)}`;
+      const d = getRedeemData();
+      if(d.item && d.points > 0){
+        box.innerHTML = `Anggaran nilai redeem: <b>${formatRM(d.value)}</b>`;
         box.classList.add("show");
-      }
+      } else box.classList.remove("show");
     }
   }
 
-  function checkStep3() {
-    document.getElementById("errStep3").style.display = "none";
-    if (mode === "earn") {
-      const item = document.getElementById("earnItem").value.trim();
-      const percent = parseFloat(document.getElementById("earnPercent").value) || 0;
-      if (!item || rawPrice <= 0 || percent <= 0) {
-        document.getElementById("errStep3").style.display = "block";
-        return;
-      }
+  function checkStep3(){
+    if(mode === "earn"){
+      const d = getEarnData();
+      if(!d.item || d.price <= 0 || d.percent <= 0){ document.getElementById("errStep3").classList.add("show"); return; }
     } else {
-      const item = document.getElementById("redeemItem").value.trim();
-      const points = parseFloat(document.getElementById("redeemPoints").value) || 0;
-      if (!item || points <= 0) {
-        document.getElementById("errStep3").style.display = "block";
-        return;
-      }
+      const d = getRedeemData();
+      if(!d.item || d.points <= 0){ document.getElementById("errStep3").classList.add("show"); return; }
     }
     goStep(4);
   }
 
-  function loadTemplates() {
-    const sourceArray = mode === "earn" ? allComments.earn : allComments.redeem;
-    const safeArray = Array.isArray(sourceArray) && sourceArray.length ? sourceArray : fallbackComments[mode];
-    const shuffled = [...safeArray].sort(() => 0.5 - Math.random()).slice(0, 4);
+  function fillTemplate(tpl){
+    if(mode === "earn"){
+      const d = getEarnData();
+      return tpl.replaceAll("{item}", d.item)
+                .replaceAll("{price}", formatRM(d.price))
+                .replaceAll("{percent}", `${d.percent}%`)
+                .replaceAll("{netValue}", formatRM(d.netValue));
+    }
+    const d = getRedeemData();
+    return tpl.replaceAll("{item}", d.item)
+              .replaceAll("{points}", formatNum(d.points))
+              .replaceAll("{value}", formatRM(d.value));
+  }
+
+  function loadTemplates(){
     const list = document.getElementById("commentList");
     list.innerHTML = "";
-    document.getElementById("finalCommentText").value = "";
-
-    shuffled.forEach((tpl, index) => {
-      const text = fillTemplate(tpl);
-      const card = document.createElement("button");
-      card.className = "comment-card";
-      card.type = "button";
-      card.innerText = text;
-      card.onclick = () => selectComment(card, text);
-      list.appendChild(card);
-      if (index === 0) selectComment(card, text);
+    const source = allComments[mode] || [];
+    templateStatus.textContent = `${source.length} template`;
+    const selected = [...source].sort(() => Math.random() - 0.5).slice(0, 5);
+    selected.forEach(tpl => {
+      const rendered = fillTemplate(tpl);
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "comment";
+      btn.textContent = rendered;
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".comment").forEach(c => c.classList.remove("selected"));
+        btn.classList.add("selected");
+        document.getElementById("finalCommentText").value = rendered;
+        document.getElementById("errStep4").classList.remove("show");
+      });
+      list.appendChild(btn);
     });
   }
 
-  function selectComment(card, text) {
-    document.querySelectorAll(".comment-card").forEach(c => c.classList.remove("selected"));
-    card.classList.add("selected");
-    document.getElementById("finalCommentText").value = text;
-    document.getElementById("errStep4").style.display = "none";
-  }
-
-  function checkStep4() {
-    const finalText = document.getElementById("finalCommentText").value.trim();
-    if (!finalText) {
-      document.getElementById("errStep4").style.display = "block";
-      return;
-    }
+  function checkStep4(){
+    const txt = document.getElementById("finalCommentText").value.trim();
+    if(!txt){ document.getElementById("errStep4").classList.add("show"); return; }
     goStep(5);
   }
 
-  function fillTemplate(template) {
-    if (mode === "earn") {
-      const item = document.getElementById("earnItem").value.trim();
-      const percent = document.getElementById("earnPercent").value.trim() + "%";
-      const price = formatRM(rawPrice);
-      const net = formatRM(rawPrice * (parseFloat(document.getElementById("earnPercent").value) || 0) / 100 * 0.95);
-      return template
-        .replaceAll("{item}", item)
-        .replaceAll("{price}", price)
-        .replaceAll("{percent}", percent)
-        .replaceAll("{netValue}", net);
-    }
-    const item = document.getElementById("redeemItem").value.trim();
-    const pointsNum = parseFloat(document.getElementById("redeemPoints").value) || 0;
-    const points = Math.round(pointsNum).toLocaleString("en-MY");
-    const value = formatRM(pointsNum / 100);
-    return template
-      .replaceAll("{item}", item)
-      .replaceAll("{points}", points)
-      .replaceAll("{value}", value);
+  function getStaffHashtag(){
+    const code = cleanStaffCode(document.getElementById("staffCode").value, true);
+    return code ? `#${code}` : "";
   }
 
-  function formatRM(value) {
-    return "RM" + (Number(value) || 0).toLocaleString("en-MY", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function prepareFinalReview(){
+    const review = document.getElementById("finalCommentText").value.trim();
+    const staffTag = getStaffHashtag();
+    document.getElementById("mockReviewText").textContent = review;
+    document.getElementById("mockHashtags").textContent = `${MANDATORY_HASHTAGS} ${staffTag}`.trim();
   }
 
-  function buildHashtags() {
-    const code = getStaffCode();
-    const staffTag = code ? "#" + code : "";
-    return [MANDATORY_HASHTAGS, staffTag].filter(Boolean).join(" ");
-  }
-
-  function prepareFinalReview() {
-    const reviewText = document.getElementById("finalCommentText").value.trim();
-    const hashtags = buildHashtags();
-    document.getElementById("mockReviewText").innerText = reviewText;
-    document.getElementById("mockHashtags").innerText = hashtags;
-  }
-
-  function getFinalReview() {
-    const reviewText = document.getElementById("finalCommentText").value.trim();
-    const hashtags = buildHashtags();
-    return `${reviewText}\n\n${hashtags}`.trim();
-  }
-
-  async function copyAndProceed() {
-    const text = getFinalReview();
-    try {
-      await navigator.clipboard.writeText(text);
+  async function copyAndProceed(){
+    prepareFinalReview();
+    const review = document.getElementById("mockReviewText").textContent;
+    const hashtags = document.getElementById("mockHashtags").textContent;
+    const finalText = `${review}\n\n${hashtags}`.trim();
+    try{
+      await navigator.clipboard.writeText(finalText);
       document.getElementById("successModal").classList.add("show");
-    } catch (err) {
-      fallbackCopy(text);
-      document.getElementById("successModal").classList.add("show");
+    }catch(e){
+      alert("Tak dapat auto-copy. Sila copy manual dari preview, kemudian paste di Google Review.");
+      window.open(GOOGLE_MAPS_URL, "_blank");
     }
   }
 
-  function fallbackCopy(text) {
-    const area = document.createElement("textarea");
-    area.value = text;
-    area.setAttribute("readonly", "");
-    area.style.position = "fixed";
-    area.style.opacity = "0";
-    document.body.appendChild(area);
-    area.select();
-    try { document.execCommand("copy"); } catch (e) {}
-    document.body.removeChild(area);
-  }
-
-  function openGoogleMaps() {
-    window.open(GOOGLE_MAPS_URL, "_blank", "noopener,noreferrer");
-  }
-
-  function closeModal() {
-    document.getElementById("successModal").classList.remove("show");
-  }
+  function openGoogleMaps(){ window.open(GOOGLE_MAPS_URL, "_blank"); }
+  function closeModal(){ document.getElementById("successModal").classList.remove("show"); }
 </script>
 </body>
 </html>
